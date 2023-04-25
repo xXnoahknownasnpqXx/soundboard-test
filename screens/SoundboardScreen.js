@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet, Button} from 'react-native';
 import { Audio } from 'expo-av';
 import { StatusBar } from 'expo-status-bar';
 import SoundButton from '../components/soundbutton';
 //Expo audio https://docs.expo.dev/versions/latest/sdk/audio/
 //Code inspriation from https://github.com/simonandrew/react-native-soundboard
 
-const SoundboardScreen = () => {
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const SoundboardScreen = ({navigation}) => {
   const [sound, setSound] = React.useState();
   
   async function playSound(soundName) {
@@ -52,6 +55,11 @@ const SoundboardScreen = () => {
         </View>
         <Text style={styles.heading}>{"\n"}Tap an icon to {"\n"}play that sound!</Text>
         <StatusBar style="auto" />
+
+        <Button
+        title="Go to About"
+        onPress={() => navigation.navigate('AboutScreen')}>
+        </Button> 
       </View>
     );
     
