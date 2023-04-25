@@ -9,23 +9,20 @@ import SoundButton from '../components/soundbutton';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+//incorprites navigation
 const SoundboardScreen = ({navigation}) => {
   const [sound, setSound] = React.useState();
   
   async function playSound(soundName) {
     console.log(`playSound: ${soundName}`);
+    
+    //creates sound, sets sound, 
     const { sound } = await Audio.Sound.createAsync(sounds[soundName]);
     setSound(sound);
     await sound.playAsync();
-    /*try {
-      await soundObject.loadAsync(sounds[soundName]);
-      setSound(sounds[soundName]);
-      await soundObject.playAsync();
-    } catch (error) {
-      console.log(error);
-    }*/
   }
 
+  //plays sound
   React.useEffect(() => {
     return sound
       ? () => {
@@ -35,7 +32,8 @@ const SoundboardScreen = ({navigation}) => {
       : undefined;
   }, [sound]);
   
-  
+    //sound button layout
+    //button to switch screens
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>Soundboard {"\n"}App</Text>
@@ -65,6 +63,7 @@ const SoundboardScreen = ({navigation}) => {
     
 }
 
+//holds sounds and location
 //Sounds from https://freesound.org/
 const sounds = {
     'clap': require('../assets/mixkit-one-clap-481.wav'),

@@ -1,16 +1,21 @@
 import * as React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
 
+//React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+//Import screens
 import AboutScreen from "./screens/AboutScreen"
 import SoundboardScreen from "./screens/SoundboardScreen"
 
 export default function App(){
+  //Construct navigator method
   const Stack = createNativeStackNavigator();
   
     return (
+      //navigation container
+        //creates navigation
+          //stack obj to hold screens
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen 
@@ -27,12 +32,3 @@ export default function App(){
       </NavigationContainer>
     );
     }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#59584c',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
